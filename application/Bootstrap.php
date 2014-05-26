@@ -52,8 +52,8 @@
 		 */
 		public function getTools() 
 		{
-			$libraryPath = "library";
-			require_once "$libraryPath/epub/Epub.inc.php";
+			$libraryPath = realpath(__DIR__)."/../library";
+			require_once "$libraryPath/epub/EPub.inc.php";
 			require_once "$libraryPath/phpDocx/classes/TransformDoc.inc.php";
 			require_once "$libraryPath/mobi/Mobi.inc.php";
 			require_once "$libraryPath/mpdf/mpdf.inc.php";

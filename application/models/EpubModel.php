@@ -31,12 +31,17 @@
 		{
 			$epub = $this->dfcTools['epubConverter'];
 			if (!$options['customOptions']['html']) { //if no html has been passed, transform the Word Document
-				$html = strip_tags($transform->getDocumentHTML($options['src']), "<p><script><style><span>"); //an example of basic 'content cleansing'
+                $html = strip_tags($transform->getDocumentHTML($options['src']), "<p><script><style><span><body>"); //an example of basic 'content cleansing'
+                $html = '<html>' . $html . '</html>';
+                $html = preg_replace('/\<script[^\<]*\<\/script\>/m', '', $html);
+                $html = preg_replace('/\<style[^\<]*\<\/style\>/m', '', $html);
+                $html = str_replace('&nbsp;', ' ', $html);
 			} else {
 				$html = $options['customOptions']['html'];
 			}
+            $epub->setCoverImage("config/book-cover.jpg");
 			$epub->setTitle($options['options']['Title']); //setting specific options to the EPub library
-			$epub->setIdentifier($options['options']['Identifier'], EPub::IDENTIFIER_URI); 
+			$epub->setIdentifier($options['options']['Identifier'], EPub::IDENTIFIER_URI);
 			$epub->addChapter("Body", "Body.html", $html);
 			$epub->finalize();
 			$zipData = $epub->sendBook("Example");

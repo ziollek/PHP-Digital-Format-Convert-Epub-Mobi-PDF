@@ -36,7 +36,7 @@
 					'Publisher' => 'FUBAR Publications',
 					'Identifier' => '111-999-222'
 				),
-				'src' => 'application/example/manuscript.docx'
+				'src' => 'config/book.docx'
 			);
 			if ($customOptions) $options['customOptions'] = $customOptions;
 			$this->epubModel->createEpub($this->transform, $options);

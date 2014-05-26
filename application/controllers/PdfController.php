@@ -35,7 +35,7 @@
 					'Language' => 'en',
 					'Publisher' => 'FUBAR Publications',
 				),
-				'src' => 'application/example/manuscript.docx'
+				'src' => 'config/book.docx'
 			);
 			if ($customOptions) $options['customOptions'] = $customOptions;
 			$this->pdfModel->createPdf($this->transform, $options);

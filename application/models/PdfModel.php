@@ -32,6 +32,7 @@
 			$pdf = $this->dfcTools['pdfConverter'];
 			if (!$options['customOptions']['html']) { //if no html has been passed, transform the Word Document
 				$html = '<?xml encoding="UTF-8">' . $transform->getDocumentHTML($options['src']);
+                $html = preg_replace('/\<body[^>]*\>/', '<body><img src="'.realpath(__DIR__).'/../../config/book-cover.jpg"/><pagebreak />', $html);
 			} else {
 				$html = $options['customOptions']['html'];
 			}

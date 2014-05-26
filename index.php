@@ -23,13 +23,15 @@
 	}
 ?>
 <html>
-<head></head>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
 <link rel="stylesheet" href="bootstrap.css" />
 <body>
 	<div class="container">
 	<?php
 		//a VERY simple page router/despatcher to include the 'default' view if the index.php file is requested
-		if (strtolower($_SERVER['PHP_SELF']) == "/path_to_dir/index.php") {
+		if (strtolower($_SERVER['PHP_SELF']) == "/index.php") {
 			include 'application/views/default.php';
 		}
 	?>

@@ -141,7 +141,6 @@ class MOBI {
 					$img->setAttribute("recindex", $savedImages[$src]);
 				}else{
 					$image = ImageHandler::DownloadImage($src);
-					
 					if($image !== false){
 						$images[$this->imgCounter] = new FileRecord(new Record($image));
 	
@@ -153,11 +152,14 @@ class MOBI {
 			}
 		
 			$this->images = $images;
+
 			//end image stuff
 			$data = $dom->saveXML();
 			$data = str_replace("<pagebreak/>", "<mbp:pagebreak/>", $data);
-			//echo $data;
-			//print_r($this->images);
+            $data = str_replace("<pagebreak></pagebreak>", "<mbp:pagebreak/>", $data);
+//			echo $data;
+//			print_r($this->images);
+
 			$this->source = $data;
 			$this->prc = false;
 	}
